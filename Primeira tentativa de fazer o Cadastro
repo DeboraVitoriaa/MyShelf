@@ -1,0 +1,10 @@
+vet1:str(input('Digite o nome do responsável da criança ou adolescente: '))
+vet2:int(input('Digite a idade do responsável da criança ou adolescente: '))
+vet3:str(input('Digite sua cidade: '))
+vet4:str(input('Digite o nome da criança ou adolescente: '))
+vet5:int(input('Digite a idade da criança ou adolescente: '))
+vet6:str(input('Digite a classe da criança ou adolescente: '))
+vet7:str(input('Digite um nome de usuário: '))
+vet8:int(input('Digite uma senha: '))
+
+print('parabéns, seu cadastro foi realizado com sucesso! ')
