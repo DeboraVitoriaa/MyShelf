@@ -1,0 +1,43 @@
+arq = open('registrados.txt', 'a')
+print('Olá, neste campo você pode realizar seu cadastro!')
+vet1:str(input('Digite o nome do responsável da criança ou adolescente: '))
+vet2:int(input('Digite a idade do responsável da criança ou adolescente: '))
+vet3:str(input('Digite o nome da criança ou adolescente: '))
+vet5:int(input('Digite a idade da criança ou adolescente: '))
+vet6:str(input('Digite a classe da criança ou adolescente: '))
+vet7 = input('Digite um email válido:')
+vet8 = input('Digite o nome de usuário: ')
+vet9 = input('Digite a senha: ')
+
+arq.write('{}\n'.format(vet7))
+'''
+Adição da constante \n new line
+Uma vez que write não o adiciona automaticamente
+'''
+arq.write('{}\n'.format(vet8))
+'''
+Adição da constante \n new line
+Uma vez que write não o adiciona automaticamente
+'''
+
+print('Parabéns, seu cadastro realizado com sucesso!\n')
+arq.close() #O arquivo é fechado do modo de adição para ser aberto
+            #posteriormente no modo de leitura
+
+arq = open('registrados.txt') #abrindo no modo de leitura
+print('Olá, aqui você efetua o seu login.')
+nome_login = input('Digite o nome de usuario: ')
+senha_usuario = input('Digite a senha: ')
+
+registrados = arq.readlines()
+if nome_login + '\n' in registrados:
+    print('Bem vindo, {}!'.format(nome_login))
+else:
+    print('Você pode ter digitado usuário ou senha incorretamente, por favor verifique.')
+
+    registrados = arq.readlines()
+if senha_usuario + '\n' in registrados:
+    print('Espero que você consiga aprender se divertir bastante por aqui com o MyShelf!')
+else:
+   print('Você pode ter digitado usuário ou senha incorretamente, por favor verifique.')
+arq.close()
