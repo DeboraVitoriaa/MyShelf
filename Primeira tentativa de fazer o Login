@@ -1,0 +1,6 @@
+print('Aqui você efetua o seu login.')
+nome_login = input('Digite o seu nome de usuario: ')
+senha_usuario = input('Digite a senha: ')
+
+print('Bem vindo, {}!'.format(nome_login))
+print('Espero que você consiga aprender se divertir bastante por aqui com o MyShelf!')
