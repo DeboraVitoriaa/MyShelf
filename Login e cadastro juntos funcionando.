@@ -1,0 +1,92 @@
+import json
+
+def cadastro():
+  arq = open('registrados.json', 'r')
+  lista_usuarios = json.load(arq)
+  
+  print('Olá, neste campo você pode realizar seu cadastro!')
+
+  while True:
+    nome_responsavel = str(input(f'Digite o nome responsavel: ')).strip()
+    if nome_responsavel.isalpha():
+      break
+    else:
+      print('Nome inválido')
+      continue
+
+  # Tratamento de erro idade
+  while True:
+    try:
+      idade_responsavel = int(input('Digite a idade do responsável da criança ou adolescente: '))
+    except:
+      print('Insira uma idade válida.')
+      pass
+    else:
+      if idade_responsavel >= 18:
+        break
+      else:
+        print("O responsável deve ser maior de idade.")
+
+
+  while True:
+    nome_crianca = str(input('Digite o nome da criança ou adolescente: '))
+    idade_crianca = int(input('Digite a idade da criança ou adolescente: '))
+    if idade_crianca >= 7:
+      break
+    else:
+      print("A criança deve ter mais que 7 anos de idade.")
+
+  classe_crianca = str(input('Digite a classe da criança ou adolescente: '))
+  email = input('Digite um email válido: ')
+  usuario = input('Digite o nome de usuário: ')
+  senha = input('Digite a senha: ')
+
+  conta_cadastro = {
+    "usuario": usuario,
+    "senha": senha,
+    "email": email,
+    "nome_responsavel": nome_responsavel,
+    "idade_responsavel": idade_responsavel,
+    "classe_crianca": classe_crianca,
+    "nome_crianca": nome_crianca,
+    "idade_crianca": idade_crianca
+  }
+
+  lista_usuarios.append(conta_cadastro)
+  arq = open('registrados.json', 'w')
+  arq.write(json.dumps(lista_usuarios, indent = 4, ensure_ascii = False))
+
+  print('Parabéns, seu cadastro realizado com sucesso!\n')
+
+def login():
+  arq = open('registrados.json') # abrindo no modo de leitura
+  lista_de_usuarios = json.load(arq)
+
+  print('Olá, aqui você efetua o seu login.')
+
+  while 1:
+    nome_login = input('Digite o nome de usuario: ')
+    senha_usuario = input('Digite a senha: ')
+    for usuario in lista_de_usuarios:
+      if usuario["usuario"] == nome_login:
+        if usuario["senha"] == senha_usuario:
+          print('Logado com sucesso')
+          break
+    else:
+      print('Nenhuma correspondência encontrada, tente novamente')
+      continue
+    break
+
+print('Escolha como continuar')
+print('A - Fazer login\nB - Fazer cadastro')
+while 1:
+  opcao = input('')
+  if opcao.upper() == 'A':
+    login()
+    break
+  elif opcao.upper() == 'B':
+    cadastro()
+    break
+  else:
+    print('Insira uma opção válida')
+    continue
